@@ -10,12 +10,8 @@ function WriteException($exception)
 	
 	Write-Host $exception.Message -ForegroundColor Magenta -NoNewline
 	Write-Host " (" $exception.GetType() ")" -ForegroundColor Red 
-	if ($exception.InnerException -ne $null)
+	if ($null -ne $exception.InnerException)
 	{
 		WriteException $exception.InnerException
-	}
-	else
-	{
-		Write-Host ""
 	}
 }
